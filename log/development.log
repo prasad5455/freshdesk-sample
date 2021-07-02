@@ -1,0 +1,515 @@
+Started GET "/" for ::1 at 2021-06-24 12:20:52 +0530
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/poplify/.rvm/gems/ruby-2.6.5/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/poplify/.rvm/gems/ruby-2.6.5/gems/railties-6.1.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 39.3ms | Allocations: 513)
+Completed 200 OK in 85ms (Views: 49.5ms | ActiveRecord: 0.0ms | Allocations: 4445)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210624070539)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210624070539"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProducts (20210624070640)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "stripe_plan_name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "price_cents" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "price_currency" varchar DEFAULT 'USD' NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210624070640"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateOrders (20210624071329)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "user_id" integer, "status" integer, "token" varchar, "charge_id" varchar, "error_message" varchar, "customer_id" varchar, "payment_gateway" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "orders" ADD "price_cents" integer DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210624071329"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-06-24 07:23:06.821825"], ["updated_at", "2021-06-24 07:23:06.821825"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-07-02 16:25:53 +0530
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/dhupatisaicharan/workspace/stripe-fresh/app/controllers/home_controller.rb:18: syntax error, unexpected rescue, expecting end
+    rescue RestClient::Exception => e
+    ^~~~~~
+/home/dhupatisaicharan/workspace/stripe-fresh/app/controllers/home_controller.rb:18: syntax error, unexpected =>
+...rescue RestClient::Exception => e
+...                             ^~):
+  
+app/controllers/home_controller.rb:18: syntax error, unexpected rescue, expecting end
+app/controllers/home_controller.rb:18: syntax error, unexpected =>
+app/controllers/home_controller.rb:18: syntax error, unexpected rescue, expecting end
+app/controllers/home_controller.rb:18: syntax error, unexpected =>
+app/controllers/home_controller.rb:18: syntax error, unexpected rescue, expecting end
+app/controllers/home_controller.rb:18: syntax error, unexpected =>
+Started GET "/" for ::1 at 2021-07-02 16:26:51 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1090)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/dhupatisaicharan/workspace/stripe-fresh/public/packs
+[Webpacker] Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+
+[Webpacker] Hash: 29348f0c25ecc75b147b
+Version: webpack 4.46.0
+Time: 7102ms
+Built at: 07/02/2021 4:27:08 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-8ce956fb95ec00007194.js    125 KiB  application  [emitted] [immutable]  application
+js/application-8ce956fb95ec00007194.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-8ce956fb95ec00007194.js js/application-8ce956fb95ec00007194.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 534 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 17068.7ms | Allocations: 14554)
+Completed 200 OK in 17087ms (Views: 17071.6ms | Allocations: 17427)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:28:08 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1012)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 4127)
+Completed 200 OK in 18ms (Views: 16.5ms | Allocations: 5364)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:29:17 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1011)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 4128)
+Completed 200 OK in 24ms (Views: 18.7ms | Allocations: 5365)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:29:37 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1020)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 4136)
+Completed 200 OK in 17ms (Views: 14.9ms | Allocations: 5373)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:30:07 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1113)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 4229)
+Completed 200 OK in 24ms (Views: 22.0ms | Allocations: 5462)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:31:50 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1305)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 5971)
+Completed 200 OK in 38ms (Views: 21.4ms | ActiveRecord: 0.0ms | Allocations: 8966)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:33:39 +0530
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.7ms | Allocations: 1272)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 68.2ms | Allocations: 5911)
+Completed 200 OK in 7323ms (Views: 86.1ms | ActiveRecord: 0.0ms | Allocations: 64485)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:33:50 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+Completed 500 Internal Server Error in 8719ms (ActiveRecord: 0.0ms | Allocations: 24094)
+
+
+  
+SocketError (Failed to open TCP connection to .freshdesk.com:443 (getaddrinfo: Name or service not known)):
+  
+app/controllers/home_controller.rb:18:in `index'
+Started GET "/home/index" for ::1 at 2021-07-02 16:34:18 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/home/index"):
+  
+Started GET "/home/index" for ::1 at 2021-07-02 16:34:22 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/home/index"):
+  
+Started GET "/" for ::1 at 2021-07-02 16:34:24 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 692)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 3565)
+Completed 200 OK in 63220ms (Views: 30.5ms | ActiveRecord: 0.0ms | Allocations: 21008)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:35:31 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+Completed 500 Internal Server Error in 13145ms (ActiveRecord: 0.0ms | Allocations: 20379)
+
+
+  
+SocketError (Failed to open TCP connection to .freshdesk.com:443 (getaddrinfo: Name or service not known)):
+  
+app/controllers/home_controller.rb:18:in `index'
+Started GET "/" for ::1 at 2021-07-02 16:36:52 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.9ms | Allocations: 3591)
+Completed 200 OK in 31ms (Views: 25.7ms | Allocations: 4194)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:36:55 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+Completed 500 Internal Server Error in 50299ms (Allocations: 26656)
+
+
+  
+SocketError (Failed to open TCP connection to .freshdesk.com:443 (getaddrinfo: Name or service not known)):
+  
+app/controllers/home_controller.rb:18:in `index'
+Started GET "/" for ::1 at 2021-07-02 16:37:49 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 3592)
+Completed 200 OK in 12ms (Views: 11.2ms | Allocations: 4209)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:37:51 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+Completed 500 Internal Server Error in 1370ms (Allocations: 19650)
+
+
+  
+NoMethodError (undefined method `response' for #<SocketError:0x00005589850e6a00>
+Did you mean?  respond_to?):
+  
+app/controllers/home_controller.rb:22:in `rescue in index'
+app/controllers/home_controller.rb:4:in `index'
+Started GET "/" for ::1 at 2021-07-02 16:38:28 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 696)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3591)
+Completed 200 OK in 13ms (Views: 11.9ms | Allocations: 4200)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:39:07 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 677)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3547)
+Completed 200 OK in 1896ms (Views: 13.0ms | Allocations: 21491)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:40:24 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 686)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 3556)
+Completed 200 OK in 2180ms (Views: 13.1ms | Allocations: 21958)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:43:40 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 4180)
+Completed 200 OK in 2256ms (Views: 18.5ms | Allocations: 23422)
+
+
+Started GET "/home/index" for ::1 at 2021-07-02 16:44:05 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/home/index"):
+  
+Started GET "/" for ::1 at 2021-07-02 16:44:10 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1152)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 4264)
+Completed 200 OK in 23ms (Views: 20.7ms | Allocations: 5573)
+
+
+Started GET "/" for ::1 at 2021-07-02 16:44:28 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 699)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 3593)
+Completed 200 OK in 15ms (Views: 14.0ms | Allocations: 4218)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:44:32 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"", "api_key"=>"[FILTERED]", "email"=>"", "status"=>"1", "priority"=>"1", "description"=>"", "subject"=>"", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 684)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3553)
+Completed 200 OK in 1992ms (Views: 17.8ms | Allocations: 22476)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:49:24 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"2", "priority"=>"2", "description"=>"Testing the stripe-app", "subject"=>"Creating Ticket Sample", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 1135)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 4183)
+Completed 200 OK in 28342ms (Views: 38.2ms | Allocations: 30337)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 16:50:41 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"1", "priority"=>"1", "description"=>"Testing testing", "subject"=>"Test Ticket", "cc_email"=>"abc@gmail.com", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 689)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3559)
+Completed 200 OK in 657658ms (Views: 14.0ms | Allocations: 70889)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 17:04:31 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"1", "priority"=>"1", "description"=>"Testing Testing", "subject"=>"Testing ticket", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1208)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 4255)
+Completed 200 OK in 4495ms (Views: 9.3ms | Allocations: 25582)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 17:05:33 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"2", "priority"=>"1", "description"=>"Testing testing", "subject"=>"Testing ticket", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 757)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 3626)
+Completed 200 OK in 2616ms (Views: 35.0ms | Allocations: 24155)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 17:07:26 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"2", "priority"=>"1", "description"=>"Testing testing", "subject"=>"Testing Ticket", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 752)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 3622)
+Completed 200 OK in 77712ms (Views: 22.7ms | Allocations: 40025)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 17:09:35 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"2", "priority"=>"1", "description"=>"Tes ticket creation from application", "subject"=>"Test ticket creation", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 757)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.3ms | Allocations: 3627)
+Completed 200 OK in 30454ms (Views: 45.0ms | Allocations: 38255)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:17:47 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1229)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 4300)
+Completed 200 OK in 12ms (Views: 10.1ms | Allocations: 5651)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:18:30 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1234)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 4345)
+Completed 200 OK in 24ms (Views: 22.4ms | Allocations: 5652)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:19:30 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 4342)
+Completed 200 OK in 17ms (Views: 14.6ms | Allocations: 5665)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:19:49 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4342)
+Completed 200 OK in 12ms (Views: 10.9ms | Allocations: 5661)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:20:48 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 4342)
+Completed 200 OK in 12ms (Views: 10.1ms | Allocations: 5661)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:20:58 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 4342)
+Completed 200 OK in 12ms (Views: 10.4ms | Allocations: 5657)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:21:16 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 4342)
+Completed 200 OK in 17ms (Views: 14.9ms | Allocations: 5659)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:21:35 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1236)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 4348)
+Completed 200 OK in 11ms (Views: 9.8ms | Allocations: 5683)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:21:46 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 4342)
+Completed 200 OK in 12ms (Views: 9.9ms | Allocations: 5647)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:21:55 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 4342)
+Completed 200 OK in 18ms (Views: 15.9ms | Allocations: 5661)
+
+
+Started GET "/" for ::1 at 2021-07-02 17:23:11 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1231)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 4342)
+Completed 200 OK in 23ms (Views: 21.0ms | Allocations: 5663)
+
+
+Started POST "/home/index" for ::1 at 2021-07-02 17:28:03 +0530
+Processing by HomeController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freshdesk_domain"=>"newaccount1624943039164", "api_key"=>"[FILTERED]", "email"=>"veera@poplify.com", "status"=>"2", "priority"=>"1", "subject"=>"Creating from APP", "description"=>"Creating a ticket from the app", "cc_email"=>"", "commit"=>"Submit"}
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 760)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 3654)
+Completed 200 OK in 1513ms (Views: 13.3ms | Allocations: 6858)
+
+

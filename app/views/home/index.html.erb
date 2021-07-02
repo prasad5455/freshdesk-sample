@@ -1,0 +1,50 @@
+<div style="text-align: center;">
+  <h1> Fresh Desk API Request </h1>
+  <%= form_tag home_index_path do %>
+    <% if (flash[:error] || flash[:success]).present? %>
+      <%= flash[:error] || flash[:success] %>
+    <% end %>
+    <br>
+    <%= label_tag(:freshdesk_domain) %>
+    <br>
+    <%= text_field_tag(:freshdesk_domain) %>
+    <br>
+    <br>
+    <%= label_tag(:api_key) %>
+    <br>
+    <%= text_field_tag(:api_key) %>
+    <br>
+    <br>
+    <%= label_tag(:email) %>
+    <br>
+    <%= text_field_tag(:email) %>
+    <br>
+    <br>
+    <%= label_tag(:status) %>
+    <br>
+    <%= select_tag(:status, options_for_select([["2",2],["3",3],["4",4], ["5", 5], ['6', 6], ['7', 7]], params[:status] ), class:"select") %>
+    <br>
+    <br>
+    <%= label_tag(:priority) %>
+    <br>
+    <%= select_tag(:priority, options_for_select([["1",1],["2",2],["3",3], ["4", 4]], params[:priority] ), class:"select") %>
+    <br>
+    <br>
+    <%= label_tag(:subject) %>
+    <br>
+    <%= text_field_tag(:subject) %>
+    <br>
+    <br>
+    <%= label_tag(:description) %>
+    <br>
+    <%= text_area_tag(:description) %>
+    <br>
+    <br>
+    <%= label_tag(:cc_email) %>
+    <br>
+    <%= text_field_tag(:cc_email) %>
+    <br>
+    <br>
+    <%= submit_tag("Submit") %>
+  <% end %>
+</div>
